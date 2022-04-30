@@ -3,7 +3,6 @@ import { FaStar } from "react-icons/fa";
 
 export default function StarRating({ totalStars = 5 }) {
   const [selectedStarts, setSelectedStars] = useState(0);
-  
   const Star = ({ selected = false, onSelect = f => f }) => (
     <FaStar color={selected ? "red" : "grey"} onClick={onSelect} />
   );
