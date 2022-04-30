@@ -1,13 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import StarRating from './componets/StarRating';
+import React, { useState } from "react";
+import colorData from './data/color-data.json';
+import ColorList from './componets/ColorList';
 
 function App() {
+  const [colors] = useState(colorData)
   return (
-    <StarRating
-      style={{ backgroundColor: "lightblue" }}
-      onDoubleClick={e => alert("double click")}
-    />
+    <ColorList colors={colors} />
   );
 }
 
