@@ -1,27 +1,27 @@
 import React from "react";
 import { useRef, useState } from "react";
+import { useInput } from "../hook/useInput";
 
 export default function AddColorFrom({ onNewColor = f => f }) {
-  const [title, setTitle] = useState("");
-  const [color, setColor] = useState("#000000");
+  const [titleProps, resetTitle] = useInput("");
+  const [colorProps, resetColor] = useInput("#000000");
 
 
   const submit = e => {
     e.preventDefault();
-    onNewColor(title, color);
-    setTitle("");
-    setColor("#000000");
+    onNewColor(titleProps, colorProps);
+    resetTitle("");
+    resetColor("#000000");
 
   };
   return (
     <form onSubmit={submit}>
-      <input value={title}
-        onChange={e => setTitle(e.target.value)}
+      <input {...titleProps}
         type="text"
         placeholder="color title..."
         required />
-      <input value={color}
-        onChange={e => setColor(e.target.value)}
+      <input
+        {...colorProps}
         type="color"
         required />
       <button>ADD</button>
