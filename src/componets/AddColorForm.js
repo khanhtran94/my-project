@@ -2,6 +2,7 @@ import React from "react";
 import { useRef, useState } from "react";
 import { useInput } from "../hook/useInput";
 import { useColors } from "./ColorProvider";
+import { css } from "emotion";
 
 export default function AddColorFrom() {
   const [titleProps, resetTitle] = useInput("");
@@ -17,7 +18,21 @@ export default function AddColorFrom() {
 
   };
   return (
-    <form onSubmit={submit}>
+    <form className={css`
+    display: flex;
+    justify-content: space-around;
+    margin: 0.25em;
+    button {
+      margin: 0.25em;
+    }
+    input {
+      margin: 0.25em;
+      &:first-child {
+        flex: 1;
+      }
+    }
+  `}
+    onSubmit={submit}>
       <input {...titleProps}
         type="text"
         placeholder="color title..."
