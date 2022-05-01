@@ -1,16 +1,12 @@
 import './App.css';
 import React, { useState } from "react";
-import colorData from './data/color-data.json';
-import ColorList from './componets/ColorList';
-import AddColorForm from './componets/AddColorForm'
-import { v4 } from "uuid";
+import Checkbox from './componets/Checkbox';
 
 function App() {
   return (
-    <>
-      <AddColorForm />
-      <ColorList />
-    </>
+    <React.StrictMode>
+      <Checkbox />
+    </React.StrictMode>
 
   );
 }
