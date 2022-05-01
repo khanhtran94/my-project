@@ -4,16 +4,16 @@ import './index.css';
 import App from './App';
 import { render } from "react-dom";
 import colors from './data/color-data.json';
+import ColorProvider, { useColors } from "./componets/ColorProvider";
 
 import reportWebVitals from './reportWebVitals';
 
-export const ColorContext = createContext();
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-render(
-  <ColorContext.Provider value={{ colors }}>
+root.render(
+  <ColorProvider>
     <App />
-  </ColorContext.Provider>,
-    document.getElementById("root")
+  </ColorProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
