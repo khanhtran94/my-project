@@ -11,13 +11,17 @@ function App() {
     setPharse(val);
   }
 
-  useEffect(() => {
-  console.log(`typep "${val}"`)
-  });
+  // useEffect(() => {
+  // console.log(`typep "${val}"`)
+  // }, [val]);
+
+  // useEffect(() => {
+  //   console.log(`saved pharse "${phrase}"`)
+  // }, [phrase]);
 
   useEffect(() => {
-    console.log(`saved pharse "${phrase}"`)
-  });
+    console.log("either val or phrase has changed")
+  }, [val, phrase])
 
   return (
     <React.StrictMode>
