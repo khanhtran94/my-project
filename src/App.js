@@ -14,13 +14,6 @@ const useAnyKeyToRender = () => {
 
 
 function WordCount({children=""}) {
-  const [count, setCount] = useState(0);
-  const [checked, toggle] =
-  useState(
-  count => (count < 5)
-  ? undefined
-  : !c, count < 5 ? undefined: !c );
-
   useAnyKeyToRender();
   const words = useMemo(() => {
     const works = children.split(" ");
@@ -31,13 +24,7 @@ function WordCount({children=""}) {
     console.log("fress render");
   }, [words]);
 
-  useEffect(() => {
-    const fn = async () => {
-      await SomePromise();
-    };
-    fn();
-  });
-
+  
   return (
     <>
       <p>{children}</p>
@@ -48,7 +35,24 @@ function WordCount({children=""}) {
   );
   
 };
+function Checkbox(params) {
+  const [checked, setChecked] = useState(false);
+  function toggle() {
+    setChecked(checked => !checked);
+  }
 
+  return(
+    <>
+      <input 
+
+        type={"checkbox"}
+        value={checked}
+        onChange={toggle}
+      />
+      {checked ? "checked" : "not checked"}
+    </>
+  );
+}
 function useWindowSize() {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -84,11 +88,8 @@ function useMousePosition() {
 };
 function App() {
 
-  const [w, h] = useWindowSize();
   return (
-    <div>
-      {w}x{h}
-    </div>
+    <Checkbox />
   );
 
 }
