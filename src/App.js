@@ -14,6 +14,13 @@ const useAnyKeyToRender = () => {
 
 
 function WordCount({children=""}) {
+  const [count, setCount] = useState(0);
+  const [checked, toggle] =
+  useState(
+  count => (count < 5)
+  ? undefined
+  : !c, count < 5 ? undefined: !c );
+
   useAnyKeyToRender();
   const words = useMemo(() => {
     const works = children.split(" ");
@@ -23,6 +30,13 @@ function WordCount({children=""}) {
   useEffect(() => {
     console.log("fress render");
   }, [words]);
+
+  useEffect(() => {
+    const fn = async () => {
+      await SomePromise();
+    };
+    fn();
+  });
 
   return (
     <>
