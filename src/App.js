@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
 
 const useAnyKeyToRender = () => {
@@ -33,10 +33,49 @@ function WordCount({children=""}) {
     </>
   );
   
-}
+};
+
+function useWindowSize() {
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  const resize = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener("resize", resize);
+    resize();
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+
+  return [width, height];
+};
+function useMousePosition() {
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+
+  const setPosition = ({ x, y }) => {
+    setX(x);
+    setY(y);
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener("mousemove", setPosition);
+    return () => window.removeEventListener("mousemove", setPosition);
+  }, []);
+
+  return [x, y];
+};
 function App() {
 
-  return <WordCount>You are not going to believe this but...</WordCount>;
+  const [w, h] = useWindowSize();
+  return (
+    <div>
+      {w}x{h}
+    </div>
+  );
 
 }
 
