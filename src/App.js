@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useReducer, useState } from "react";
 
 
 const useAnyKeyToRender = () => {
@@ -36,10 +36,8 @@ function WordCount({children=""}) {
   
 };
 function Checkbox(params) {
-  const [checked, setChecked] = useState(false);
-  function toggle() {
-    setChecked(checked => !checked);
-  }
+  const [checked, toggle] = useReducer(checked => !checked, false);
+ 
 
   return(
     <>
