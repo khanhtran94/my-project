@@ -44,7 +44,7 @@ export default function App() {
   return (
     <>
       {cats.map((name, i) => (
-        <Cat key={i} name={name} />
+        <PureCat key={i} name={name} />
       ))}
       <button onClick={() => setCats([...cats, prompt("Name a cat")])}>
         Add a Cat
