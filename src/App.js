@@ -1,16 +1,26 @@
 import './App.css';
-import React, { useState } from "react";
-import colorData from './data/color-data.json';
-import ColorList from './componets/ColorList';
-import AddColorForm from './componets/AddColorForm'
-import { v4 } from "uuid";
+import React, { useEffect, useState } from "react";
 
+
+const useAnyKeyToRender = () => {
+  const [, forceRender] = useState();
+
+  useEffect(()=>{
+    window.addEventListener("keydown", forceRender);
+    return () => window.removeEventListener("keydown", forceRender);
+
+  }, []);
+}
 function App() {
+  useAnyKeyToRender();
+
+  const word = ["gnar", "123"];
+
+  useEffect(() => {
+    console.log("fresh render");
+  }, [word]);
   return (
-    <>
-      <AddColorForm />
-      <ColorList />
-    </>
+    <h1>Open the console</h1>
 
   );
 }
