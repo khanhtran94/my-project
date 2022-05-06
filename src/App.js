@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, memo } from "react";
 
 const firstUser = {
   id: "0391-3233-3201",
@@ -32,7 +32,23 @@ function User() {
     </div>
   );
 }
+const Cat = ({ name }) => {
+  console.log(`rendering ${name}`);
+  return <p>{name}</p>;
+};
+const PureCat = memo(Cat);
 
 export default function App() {
-  return <User />;
+  const [cats, setCats] = useState(["Biscuit", "Jungle", "Outlaw"]);
+
+  return (
+    <>
+      {cats.map((name, i) => (
+        <Cat key={i} name={name} />
+      ))}
+      <button onClick={() => setCats([...cats, prompt("Name a cat")])}>
+        Add a Cat
+      </button>
+    </>
+  );
 }
