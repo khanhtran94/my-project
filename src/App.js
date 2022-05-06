@@ -11,10 +11,12 @@ const useAnyKeyToRender = () => {
 
   }, []);
 }
+const word = ["gnar", "123"];
+
+
 function App() {
   useAnyKeyToRender();
 
-  const word = ["gnar", "123"];
 
   useEffect(() => {
     console.log("fresh render");
