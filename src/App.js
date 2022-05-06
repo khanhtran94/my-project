@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 
 const useAnyKeyToRender = () => {
@@ -15,7 +15,10 @@ const useAnyKeyToRender = () => {
 
 function WordCount({children=""}) {
   useAnyKeyToRender();
-  const words = children.split("");
+  const words = useMemo(() => {
+    const works = children.split(" ");
+    return works;
+  },[children]);
 
   useEffect(() => {
     console.log("fress render");
