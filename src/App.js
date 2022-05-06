@@ -24,7 +24,7 @@ function User() {
       </p>
       <button
         onClick={() => {
-          setUser({ admin: true });
+          setUser({ ...user, admin: true });
         }}
       >
         Make Admin
