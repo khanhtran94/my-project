@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 
 const firstUser = {
   id: "0391-3233-3201",
@@ -11,7 +11,7 @@ const firstUser = {
 };
 
 function User() {
-  const [user, setUser] = useState(firstUser);
+  const [user, setUser] = useReducer((user, newDetails) => ({...user, ...newDetails}) , firstUser);
 
   return (
     <div>
