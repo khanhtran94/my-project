@@ -1,7 +1,7 @@
 import React from "react";
 import faker from "faker";
 
-const bigList = [...Array(100)].map(() => ({
+const bigList = [...Array(5000)].map(() => ({
   name: faker.name.findName(),
   email: faker.internet.email(),
   avatar: "https://picsum.photos/50"
