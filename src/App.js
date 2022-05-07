@@ -1,17 +1,36 @@
 import React, { useReducer, useState, memo, useEffect } from "react";
 
+const loadJSON = key => key && JSON.parse(localStorage.getItem(key));
+const saveJSON = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+
 function GitHubUser({login}) {
-  const [data, setData] = useState();
+  const [data, setData] = useState(loadJSON(`user:${login}`));
+
 
   useEffect(() => {
-    if (!login) {
+    if (!data) {
       return;
     }
+    if (data.login === login) {
+      return;
+    }
+    const {name, avatar_url, location} = data;
 
+    saveJSON(`user:${login}`, {
+      name,
+      login,
+      avatar_url,
+      location,
+    });
+  }, [data]);
+
+  useEffect(() => {
+    if (!login) return;
+    if (data && data.login === login) return;
     fetch(`https://api.github.com/users/${login}`)
-    .then(res => res.json())
-    .then(setData)
-    .catch(console.log)
+      .then(response => response.json())
+      .then(setData)
+      .catch(console.error);
   }, [login]);
 
   if (data) {
