@@ -15,12 +15,11 @@ export function useFetch(uri) {
     .then(setData)
     .then(() => setLoading(false))
     .catch(setError);
-
   }, [uri]);
 
   return {
     loading,
     data,
-    error,
+    error
   }
 }
