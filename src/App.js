@@ -1,6 +1,7 @@
 import React from "react";
 import faker from "faker";
 import { FixedSizeList } from "react-window";
+import GitHubUser from "./componets/GitHubUser"
 
 const bigList = [...Array(5000)].map(() => ({
   name: faker.name.findName(),
@@ -45,15 +46,6 @@ function UserComponent({ data = [] }) {
 }
 
 export default function App() {
-  const renderItem = item => (
-    <div style={{ display: "flex" }}>
-      <img src={item.avatar} alt={item.name} width={50} />
-      <p>
-        {item.name} - {item.email}
-      </p>
-    </div>
-  );
-
   const renderRow = ({ index, style }) => (
     <div style={{ ...style, ...{ display: "flex" } }}>
       <img
@@ -68,14 +60,7 @@ export default function App() {
   );
   return (
     <>
-    <FixedSizeList
-      height={window.innerHeight}
-      width={window.innerWidth -20}
-      itemCount={bigList.length}
-      itemSize={50}
-    >
-      {renderRow}
-    </FixedSizeList>
+      <GitHubUser login ="moontahoe" />
     </>
   );
 }
