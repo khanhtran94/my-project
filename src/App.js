@@ -13,7 +13,9 @@ function List({ data = [], renderEmpty }) {
 export default function App() {
   return (
     <>
-      <List  renderEmpty={<p>This list is empty</p>}/>
+      <List  
+      data={tahoe_peaks}
+      renderEmpty={<p>This list is empty</p>}/>
     </>
   );
 }
