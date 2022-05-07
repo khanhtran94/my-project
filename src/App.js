@@ -4,7 +4,7 @@ import faker from "faker";
 const bigList = [...Array(100)].map(() => ({
   name: faker.name.findName(),
   email: faker.internet.email(),
-  avatar: faker.internet.avatar()
+  avatar: "https://picsum.photos/50"
 }));
 
 const tahoe_peaks = [
@@ -29,14 +29,17 @@ function UserComponent({ data = [] }) {
   console.log(data);
   return (
     <ul>
-      <li>
-      {data.map((item, i) => {
-        <p>{data.length}</p>
-      })}
-      {data.map((item, i) => (<p key={i}>{item.name}</p>))}
-      </li>
-      <p>{data.length}</p>
-    </ul>
+      {data.map((item, i) => (
+        <li>
+          <div style={{ display: "flex" }}>
+            <img src={item.avatar} alt={item.name} width={50} />
+            <p>
+              {item.name} - {item.email}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ul >
   );
 }
 
