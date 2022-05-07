@@ -1,54 +1,32 @@
-import React, { useReducer, useState, memo } from "react";
+import React, { useReducer, useState, memo, useEffect } from "react";
 
-const firstUser = {
-  id: "0391-3233-3201",
-  firstName: "Bill",
-  lastName: "Wilson",
-  city: "Missoula",
-  state: "Montana",
-  email: "bwilson@mtnwilsons.com",
-  admin: false
-};
+function GitHubUser({login}) {
+  const [data, setData] = useState();
 
-function User() {
-  const [user, setUser] = useReducer((user, newDetails) => ({...user, ...newDetails}) , firstUser);
+  useEffect(() => {
+    if (!login) {
+      return;
+    }
 
-  return (
-    <div>
-      <h1>
-        {user.firstName} {user.lastName} - {user.admin ? "Admin" : "User"}
-      </h1>
-      <p>Email: {user.email}</p>
-      <p>
-        Location: {user.city}, {user.state}
-      </p>
-      <button
-        onClick={() => {
-          setUser({ ...user, admin: true });
-        }}
-      >
-        Make Admin
-      </button>
-    </div>
-  );
+    fetch(`https://api.github.com/users/${login}`)
+    .then(res => res.json())
+    .then(setData)
+    .catch(console.log)
+  }, [login]);
+
+  if (data) {
+    return <pre>{JSON.stringify(data, null, 2)}</pre>
+  }
+
+  return null;
+  
 }
-const Cat = ({ name }) => {
-  console.log(`rendering ${name}`);
-  return <p>{name}</p>;
-};
-const PureCat = memo(Cat);
-
 export default function App() {
-  const [cats, setCats] = useState(["Biscuit", "Jungle", "Outlaw"]);
 
   return (
     <>
-      {cats.map((name, i) => (
-        <PureCat key={i} name={name} />
-      ))}
-      <button onClick={() => setCats([...cats, prompt("Name a cat")])}>
-        Add a Cat
-      </button>
+    <GitHubUser login={"moonhighway"} />
+     
     </>
   );
 }
