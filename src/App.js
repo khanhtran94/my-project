@@ -33,6 +33,7 @@ function UserComponent({ data = [] }) {
       {data.map((item, i) => {
         <p>{data.length}</p>
       })}
+      {data.map((item, i) => (<p key={i}>{item.name}</p>))}
       </li>
       <p>{data.length}</p>
     </ul>
