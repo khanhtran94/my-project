@@ -1,5 +1,7 @@
 import { Component } from "react";
 
+import ErrorScreen from "./ErrorScreen";
+
 export default class ErrorBoundary extends Component {
   state = {error: null};
 
@@ -12,6 +14,9 @@ export default class ErrorBoundary extends Component {
 
     const {children, fallback} = this.props;
 
+    if (error && !fallback) {
+      return <ErrorScreen error={error} />;
+    }
     if (error) {
       return <fallback error ={error} />;
     }
