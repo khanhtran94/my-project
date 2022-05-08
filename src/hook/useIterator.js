@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 
 export const useIterator = (
-  item =[],
+  items = [],
   initialIndex = 0
 ) => {
   const [i, setIndex] = useState(initialIndex);
