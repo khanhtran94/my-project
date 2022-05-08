@@ -13,7 +13,7 @@ export default class ErrorBoundary extends Component {
     const {children, fallback} = this.props;
 
     if (error) {
-      return <fallback error ={error} />
+      return <fallback error ={error} />;
     }
     return children;
   }

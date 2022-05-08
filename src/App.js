@@ -1,12 +1,7 @@
-import React, { useState } from "react";
-import faker from "faker";
-import { FixedSizeList } from "react-window";
-import GitHubUser from "./componets/GitHubUser";
-import UserRepositories from "./componets/UserRepositories";
-import RepositoryReadme from "./componets/RepositoryReadme";
-import SearchForm from "./componets/SearchForm";
+import React from "react";
 import SiteLayout from "./componets/SiteLayout";
 import ErrorBoundary from "./componets/ErrorBoundary";
+
 function ErrorScreen({ error }) {
   //
   // Here you can handle or track the error before rendering the message
@@ -29,6 +24,8 @@ const Callout = ({ children }) => (
 const BreakThings = () => {
   throw new Error("We intentionally broke something");
 };
+
+
 export default function App() {
 
   return (
