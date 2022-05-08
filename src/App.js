@@ -5,40 +5,21 @@ import GitHubUser from "./componets/GitHubUser";
 import UserRepositories from "./componets/UserRepositories";
 import RepositoryReadme from "./componets/RepositoryReadme";
 import SearchForm from "./componets/SearchForm";
+import SiteLayout from "./componets/SiteLayout";
+const Callout = ({ children }) => (
+  <ErrorBoundary>
+    <div className="callout">{children}</div>
+  </ErrorBoundary>
+);
 export default function App() {
-  // const [login, setLogin] = useState("moonhighway");
-  // const [repo, setRepo] = useState("learning-react");
-
-  const [login, setLogin] = useState();
-  const [repo, setRepo] = useState();
-  const handleSearch = login => {
-    if (login) {
-      return setLogin(login);
-    }
-    setLogin("");
-    setRepo("");
-  }
-
-  if (!login) {
-    return (
-      <SearchForm value={login} onSearch={handleSearch} />
-    )
-  }
+  
   return (
+   <SiteLayout menu={<p>Menu</p>}>
     <>
-    
-      <SearchForm value={login} onSearch = {handleSearch}/>
-      {login && <GitHubUser login={login} />}
-      {login && (
-        <UserRepositories
-          login={login}
-          repo={repo}
-          onSelect={setRepo}
-        />
-      )}
-      {login && repo && (
-        <RepositoryReadme login={login} repo={repo} />
-      )}
+      <Callout>Callout</Callout>
+      <h1>Contents</h1>
+      <p>This is the main part of the example layout</p>
     </>
+   </SiteLayout>
   );
 }
