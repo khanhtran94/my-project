@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 
 export const useIterator = (
   item =[],
@@ -6,19 +6,20 @@ export const useIterator = (
 ) => {
   const [i, setIndex] = useState(initialIndex);
 
-  const prev = () => {
-    if (i === 0) {
+  const prev = useCallback(() => {
+    if (i == 0) {
       return setIndex(item.length - 1);
     }
     setIndex(i - 1);
-  }
+  }, [i]);
 
-  const next = () => {
-    if (i === item.length) {
-      return setIndex(0);
-    }
-    setIndex(i+1);
-  }
+  const next = useCallback(() => {
+    if (i === items.length - 1) return setIndex(0);
+    setIndex(i + 1);
+  }, [i]);
 
-  return [item[i], prev, next];
-}
+  const item = useMemo(() => items[i], [i]);
+
+
+  return [item || items[0], prev, next];
+};
