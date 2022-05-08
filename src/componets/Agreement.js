@@ -1,4 +1,4 @@
-export default Agreement({onAgree = f=> f}) {
+export default function Agreement({onAgree = f => f}) {
   return(
     <div>
       <p>Terms...</p>
@@ -6,4 +6,4 @@ export default Agreement({onAgree = f=> f}) {
       <button onClick={onAgree}>I agree</button>
     </div>
   );
-}
+};
