@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { useIterator } from "../hook/useIterator";
+import RepositoryReadme from "./RepositoryReadme";
 
 export default function RepoMenu({
   repositories,
-  onSelect = f=>f
+  login,
+  onSelect = f => f
 }) {
-  const [{name}, previous, next] = useIterator(repositories);
+  const [{ name }, previous, next] = useIterator(repositories);
 
   useEffect(() => {
     if (!name) {
@@ -16,10 +18,13 @@ export default function RepoMenu({
   }, [name]);
 
   return (
-    <div style={{display: "flex"}}>
-      <button onClick={previous}>Previous</button>
-      <p>{name}</p>
-      <button onClick={next}>Next</button>
-    </div>
+    <>
+      <div style={{ display: "flex" }}>
+        <button onClick={previous}>Previous</button>
+        <p>{name}</p>
+        <button onClick={next}>Next</button>
+      </div>
+      <RepositoryReadme login={login} repo={name} />
+    </>
   );
 }
