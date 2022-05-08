@@ -32,7 +32,7 @@ export default function SearchForm({onSearch = f=>f}) {
       <input {...login}
         type="text"
         placeholder="login..."
-        required />
+         />
       <input
         {...repo}
         type="text"
