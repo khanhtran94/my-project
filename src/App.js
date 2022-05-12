@@ -2,35 +2,32 @@ import React, { useState, lazy, Suspense } from "react";
 import { GridLoader } from "react-spinners";
 import Agreement from "./componets/Agreement";
 import ErrorBoundary from "./componets/ErrorBoundary";
-const BreakThings = () => {
-  throw new Error("We intentionally broke something");
-};
-const Main = lazy(() => import("./componets/Main"));
-// const loadStatus = () => "success - ready";
-// const loadStatus = () => {
-//   throw new Error("test");
-// };
-
-const loadStatus = () => {
-  throw new Promise(resolve => null);
-};
-
-function Status() {
-  const status = loadStatus();
-
-  return <h1>Status {status}</h1>
-}
+import Pages from "./componets/Pages";
+import { Routes, Route } from "react-router-dom";
+import {
+  Home,
+  About,
+  Events,
+  Products,
+  Contact
+} from './componets/Pages'
 export default function App() {
-  const [agree, setAgree] = useState(false);
+  
 
-  if (!agree) {
-    return <Agreement onAgree={() => setAgree(true)} />
-  }
   return (
     <Suspense fallback={<GridLoader />}>
-      <ErrorBoundary>
-        <Status />
-      </ErrorBoundary>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/events" element={<Events />} />
+
+          <Route path="/products" element={<Products />} />
+
+          <Route path="/contact" element={<Contact />} />
+
+        </Routes>
+      </div>
     </Suspense>
   );
 }
