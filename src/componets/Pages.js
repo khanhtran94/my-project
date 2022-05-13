@@ -7,7 +7,7 @@ export function Home() {
     <div>
       <h1>[Company Websie]</h1>
       <nav>
-      <Link to="about">About</Link>
+        <Link to="about">About</Link>
         <Link to="events">Events</Link>
         <Link to="products">Products</Link>
         <Link to="contact">Contact Us</Link>
@@ -29,8 +29,9 @@ export function About() {
 export function Events() {
   return (
     <div>
-      <h1>[Events]</h1>
-    </div>
+      <section className="events">
+        <h1>[Event Calendar]</h1>
+      </section>    </div>
   );
 }
 
