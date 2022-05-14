@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useState } from "react";
-import { useInput } from "../hook/useInput";
+import { useInput } from "./hook/useInput";
 import { useColors } from "./ColorProvider";
 import { css } from "emotion";
 
