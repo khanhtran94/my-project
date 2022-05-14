@@ -3,9 +3,11 @@ import StarRating from './StarRating';
 import { FaTrash } from "react-icons/fa";
 import { useColors } from "./ColorProvider";
 import { css } from "emotion";
+import { useNavigate } from "react-router-dom";
 
 export default function Color({ id, title, color, rating}) {
   const {rateColor, removeColor} = useColors();
+  let navigate = useNavigate();
 
   return (
     <section
@@ -27,6 +29,7 @@ export default function Color({ id, title, color, rating}) {
           text-align: center;
         }
       `}
+      onClick={() => navigate(`/${id}`)}
     >
       <h1>{title}</h1>
       <button onClick={() => removeColor(id)}>
