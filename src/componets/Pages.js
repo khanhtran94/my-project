@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../stylesheets/pages.scss'
 
 export function Home() {
@@ -48,6 +48,15 @@ export function Contact() {
   return (
     <div>
       <h1>[Contact]</h1>
+    </div>
+  );
+}
+
+export function Whoops404() {
+  let location = useLocation()
+  return (
+    <div>
+      <h1>Reource 404 {location.pathname}</h1>
     </div>
   );
 }

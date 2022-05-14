@@ -9,7 +9,8 @@ import {
   About,
   Events,
   Products,
-  Contact
+  Contact,
+  Whoops404
 } from './componets/Pages'
 export default function App() {
   
@@ -25,7 +26,7 @@ export default function App() {
           <Route path="/products" element={<Products />} />
 
           <Route path="/contact" element={<Contact />} />
-
+          <Route path="*" element={<Whoops404 />}/>
         </Routes>
       </div>
     </Suspense>
