@@ -4,7 +4,6 @@ import {
   useLocation,
   Outlet
 } from "react-router-dom";
-import '../stylesheets/pages.scss'
 
 export function Home() {
   return (
